@@ -1,0 +1,21 @@
+package com.rating.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rating.model.Rating;
+import com.rating.service.RatingService;
+
+@RestController
+
+public class Ratingontroller {
+	
+	@Autowired
+	RatingService ratingService;
+	
+	public Rating save(Rating rating) {
+		
+	}
+	
+
+}

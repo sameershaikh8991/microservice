@@ -1,0 +1,59 @@
+package com.rating.model;
+
+import java.security.interfaces.RSAMultiPrimePrivateCrtKey;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
+@Entity
+
+public class Rating {
+	
+	@Id
+	private int ratingid;
+	private int userid;
+	private int hotelid;
+	private double rating;
+	
+		
+	
+	public Rating() {
+		super();
+	}
+	public Rating(int ratingid, int userid, int hotelid, double rating) {
+		super();
+		this.ratingid = ratingid;
+		this.userid = userid;
+		this.hotelid = hotelid;
+		this.rating = rating;
+	}
+	public int getRatingid() {
+		return ratingid;
+	}
+	public void setRatingid(int ratingid) {
+		this.ratingid = ratingid;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	public int getHotelid() {
+		return hotelid;
+	}
+	public void setHotelid(int hotelid) {
+		this.hotelid = hotelid;
+	}
+	public double getRating() {
+		return rating;
+	}
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+	
+	
+	
+
+}

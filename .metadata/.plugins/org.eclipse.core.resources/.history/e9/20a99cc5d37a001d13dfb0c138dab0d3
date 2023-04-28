@@ -1,0 +1,19 @@
+package com.rating.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.rating.model.Rating;
+import com.rating.repo.RatingRepo;
+
+@Service
+public class RatingService {
+	
+	@Autowired
+	RatingRepo ratingRepo;
+	
+	public Rating  save(Rating rating) {
+		return ratingRepo.save(rating);
+	}
+
+}

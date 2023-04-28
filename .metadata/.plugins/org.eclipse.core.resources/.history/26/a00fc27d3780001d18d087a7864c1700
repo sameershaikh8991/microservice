@@ -1,0 +1,60 @@
+package com.user.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.user.model.User;
+import com.user.service.UserService;
+
+@RestController
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@GetMapping("/home")
+	public String Home() {
+		return "Hello world";
+	}
+	
+	@PostMapping("/add")
+	public ResponseEntity<User> add(@RequestBody User user) {
+		User user1 = userService.save(user); 
+		
+		return  ResponseEntity.status(HttpStatus.OK).body(user);
+	}
+	
+	@GetMapping("/all")
+	public List<User> gelall() {
+		return  userService.getAlluser();
+	}
+	
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<User> getByID(@PathVariable int id) {
+		User getbyId = this.userService.getbyId(id);
+		this.restTemplate.getForEntity("http://localhost:8083/rating/user/1\",  List.class);
+		return ResponseEntity.status(HttpStatus.CREATED).body(userService.getbyId(id));
+	}
+	
+	@DeleteMapping("/deletebyid/{id}")
+	public Object deletebyid(@PathVariable int id) {
+		return userService.deletebyId(id);
+	}
+	
+	
+}

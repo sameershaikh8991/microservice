@@ -1,0 +1,11 @@
+package com.rating.model;
+
+import java.security.interfaces.RSAMultiPrimePrivateCrtKey;
+
+public class Rating {
+	private int ratingid;
+	private int userid;
+	private int hotelid;
+	private double rating;
+
+}
